@@ -1,4 +1,4 @@
-//Find the Largest of Three Numbers
+//Find the Largest of Three Numbers.
 using System;
 
 public class HelloWorld
