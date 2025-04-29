@@ -1,4 +1,4 @@
-//Check if a number is even or odd using if-else Use Modulo
+//Check if a number is even or odd using if-else Use Modulo operator to check if a number is even or odd 
 using System;
 
  public class HelloWorld
