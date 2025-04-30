@@ -15,7 +15,7 @@ public class HelloWorld
         for (i = 1; i<= 10; i++)
         {
         
-            Console.WriteLine("squares of "+i+" is "+i*i);
+            Console.WriteLine("squares of "+ i +" is "+i*i);
         }
         
         
