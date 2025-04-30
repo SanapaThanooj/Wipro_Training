@@ -7,9 +7,8 @@ public class helloworld
     {
        Console.Write("Number:");
        int num = Convert.ToInt32(Console.ReadLine());
-       
        int sum = 0;
-       int temp = Math.Abs(num); 
+       int temp = num; 
        
        while(temp > 0)
        {
