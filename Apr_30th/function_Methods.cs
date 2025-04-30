@@ -1,4 +1,5 @@
 // C# program to demonstrate the use of methods
+// This program defines a class with several methods, including a method to calculate the square of a number, a method to greet a user, and a method to print a message. The Main method calls these methods to demonstrate their functionality.
 using System;
 
 public class helloworld
