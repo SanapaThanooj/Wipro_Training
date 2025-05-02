@@ -13,10 +13,10 @@ class BinarySearch
             {
                 return mid;
             }else if(arr[mid]<tg){
-                low = mid +1;
+                high = mid +1;
             }
             else{
-                high = mid -1;
+                low = mid -1;
             }
         }
         return -1;
