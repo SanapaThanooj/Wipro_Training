@@ -5,8 +5,8 @@ class BinarySearch
     static int BinarySearch(int[] arr, int tg)
     {
         int low =0;
-        int high =arr.Lenght-1;
-        whike(low <=high)
+        int high =arr.Length-1;
+        while(low <=high)
         {
             int mid =(low+high)/2;
             if(mid ==tg)
