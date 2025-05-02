@@ -6,7 +6,7 @@ public class Bubblesort
     {
         for(int i=0;i<arr.Length-1;i++)
         {
-            for(int j=0;j<arr.Length-1;j++){
+            for(int j=0;j<arr.Length-1-i;j++){
                if(arr[j]>arr[j+1])
                {
                    int temp =arr[j];
@@ -26,7 +26,7 @@ public class Bubblesort
     }
     static void Main()
     {
-        int [] num ={10,25,30,45,60,75};
+        int [] num ={10,30,20,54,40,75};
         Console.WriteLine("Original array");
         PrintArray(num);
         BubbleSort(num);
