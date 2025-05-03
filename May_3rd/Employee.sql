@@ -1,3 +1,10 @@
+/*  CURD Operations:
+C -- Create -- Created the Table
+U -- Read   -- select
+R -- Update -- Update
+D -- Delete -- Delete
+
+*/
 Create Table Employees(
 EmpolyeeID INT PRIMARY KEY,
 FirstName VARCHAR(50),
