@@ -3,7 +3,7 @@ Create table Products (
 	ProductName VARCHAR(100),
 	Price DECIMAL(10,2)
 );
---
+
 CREATE TABLE Orders(
 	Orderid INT PRIMARY KEY,
 	ProductID INT,
