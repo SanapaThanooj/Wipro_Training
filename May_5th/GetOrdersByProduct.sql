@@ -13,4 +13,4 @@ BEGIN
 	WHERE o.productID = @productID;
 END;  
 
-EXEC GetOrdersByProduct @productID = 1;
+EXEC GetOrdersByProduct @productID = 1; //
