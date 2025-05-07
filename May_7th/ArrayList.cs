@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 class Program
 {
@@ -8,6 +7,9 @@ class Program
         list.Add("Apple");
         list.Add(42);
         list.Add(3.14);
+        list.Insert(1, "Inserted");
+
+        Console.WriteLine("Element at Index : 1" + list[1]);
 
         foreach (var item in list)
         {
@@ -15,5 +17,5 @@ class Program
 
         }
         Console.Read();
-    }    
+    }
 }
