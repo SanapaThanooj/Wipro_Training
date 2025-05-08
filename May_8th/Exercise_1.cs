@@ -17,7 +17,6 @@ class Program
          employee.Add(new Empolyees { Name = "suri", Age = 31 });
         employee.Add(new Empolyees { Name = "suman", Age = 32 });
         employee.Add(new Empolyees { Name = "suman", Age = 34 });
-       
         employee.Remove(new Empolyees { Name = "suman", Age = 34 });
         // check if the list contains a specific Name
 
