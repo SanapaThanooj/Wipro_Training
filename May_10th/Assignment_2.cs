@@ -40,7 +40,7 @@ class Program
         ChatBot chatBot = new ChatBot();
         chatBot.Respond("Hello");
         chatBot.Respond("Explain inheritance in c#?", true);
-        chatBot.Respond("5");
+        chatBot.Respond(5);
 
     }
 }
