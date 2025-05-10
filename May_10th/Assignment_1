@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace May_10th
+{
+    class SmartHomeDevices
+    {
+        public string DeviceName;
+        public bool Powerstatus;
+        public void  TogglePower(string name)
+        {
+            Console.Write("Power status changed  from "+ Powerstatus+"to" +!Powerstatus);
+        }
+       
+    }
+    class smartLight : SmartHomeDevices
+    {
+        public int Brightness;
+
+        public void ChangeBrightness(int brightness)
+        {
+
+            Brightness = brightness;
+            Console.WriteLine($"{DeviceName} brightness set to {Brightness}%.");
+
+        }
+    }
+    class smartThermostat : SmartHomeDevices
+    {
+        public double Temperature;
+        public void ChangeTemperature()
+        {
+            this.Temperature = Temperature;
+
+            Console.WriteLine($"Temperature set to {Temperature}°C.");
+        }
+
+    }
+}
+using System;
+using May_10th;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        SmartHomeDevices device = new SmartHomeDevices();
+        device.DeviceName = "Living Room Light";
+        device.Powerstatus = false;
+        device.TogglePower(device.DeviceName);
+        smartLight light = new smartLight();
+        light.DeviceName = "Living Room Light";
+        light.Brightness = 50;
+        light.ChangeBrightness(light.Brightness);
+        smartThermostat thermostat = new smartThermostat();
+        thermostat.DeviceName = "Living Room Thermostat";
+        thermostat.Temperature = 22.5;
+        thermostat.ChangeTemperature();
+    }
+}
