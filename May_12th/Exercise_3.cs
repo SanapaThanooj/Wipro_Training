@@ -33,19 +33,20 @@ namespace May_12th
 }
 
 
+
+
 using May_12th;
 
 class Program
 {
     static void Main()
     {
-        Fiction fictionBook = new Fiction();
-        fictionBook.GetInfo();
-        fictionBook.Read();
-        NonFiction nonFictionBook = new NonFiction();
-        nonFictionBook.GetInfo();
-        nonFictionBook.Read();
-
+        Book book = new Fiction();
+        book.GetInfor();
+        book.Read();
+        book = new NonFiction();
+        book.GetInfor();
+        book.Read();
     }
 }
 
