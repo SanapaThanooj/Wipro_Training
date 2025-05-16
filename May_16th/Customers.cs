@@ -1,40 +1,48 @@
+
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
     class Program
     {
-        static void Main()
-
+        static void Main(string[] args)
         {
+
             SqlConnection conn = new SqlConnection(
-               "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=SSPI");
+               "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Northwind;INtegrated Security=SSPI");
 
             SqlDataReader rdr = null;
             try
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(
-                    "SELECT ContactName, City, CompanyName FROM Customers", conn);
+                    "SELECT * from Customers", conn);
                 rdr = cmd.ExecuteReader();
-
-                Console.WriteLine("Contact Name\t\tCity\t\tCompany Name");
-                Console.WriteLine("--------------------------------------------------------");
 
                 while (rdr.Read())
                 {
-                    Console.WriteLine($"{rdr["ContactName"],-20}\t{rdr["City"],-15}\t{rdr["CompanyName"]}");
+                    Console.WriteLine(rdr[1]);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error");
             }
             finally
             {
-                rdr?.Close();
-                conn?.Close();
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
         }
     }
