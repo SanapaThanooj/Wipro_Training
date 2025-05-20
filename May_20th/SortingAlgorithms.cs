@@ -16,7 +16,7 @@ class Program
 
         // Bubble Sort
         int[] bubbleList = (int[])randomList.Clone();
-        Stopwatch stopwatch = Stopwatch.StartNew();
+        
         BubbleSort(bubbleList);
         stopwatch.Stop();
         Console.WriteLine("Bubble Sort Result: " + string.Join(", ", bubbleList));
@@ -24,7 +24,7 @@ class Program
 
         // Selection Sort
         int[] selectionList = (int[])randomList.Clone();
-       ;
+       
 
         SelectionSort(selectionList);
         
