@@ -2,30 +2,33 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class ImageProcessor
+namespace Threads
 {
-    public static async Task Main()
+    public class ImageProcessor
     {
-        List<string> images = new List<string>();
-        for (int i = 1; i <= 20; i++)
+        public static async Task Main()
         {
-            images.Add($"Image{i}.jpg");
-        }
-
-        int completed = 0;
-        object lockObj = new object();
-
-        await Parallel.ForEachAsync(images, async (image, token) =>
-        {
-            await Task.Delay(200); // Simulate processing
-            lock (lockObj)
+            List<string> images = new List<string>();
+            for (int i = 1; i <= 20; i++)
             {
-                completed++;
-                int percent = completed * 100 / images.Count;
-                Console.WriteLine($"Processed {image} - {percent}% complete");
+                images.Add($"Image{i}.jpg");
             }
-        });
 
-        Console.WriteLine("All images processed.");
+            int completed = 0;
+            object lockObj = new object();
+
+            await Parallel.ForEachAsync(images, async (image, token) =>
+            {
+                await Task.Delay(200); // Simulate processing
+                lock (lockObj)
+                {
+                    completed++;
+                    int percent = completed * 100 / images.Count;
+                    Console.WriteLine($"Processed {image} - {percent}% complete");
+                }
+            });
+
+            Console.WriteLine("All images processed.");
+        }
     }
-}
+}    

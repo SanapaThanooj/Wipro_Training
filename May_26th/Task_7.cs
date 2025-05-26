@@ -1,54 +1,62 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
 
-public abstract class CompressionStrategy
+namespace Threads
 {
-    public abstract void Compress(string inputPath, string outputPath);
-}
-
-public class ZipCompression : CompressionStrategy
-{
-    public override void Compress(string inputPath, string outputPath)
+    public abstract class CompressionStrategy
     {
-        Console.WriteLine($"Compressing {inputPath} to {outputPath} using ZIP.");
-    }
-}
-
-public class RarCompression : CompressionStrategy
-{
-    public override void Compress(string inputPath, string outputPath)
-    {
-        Console.WriteLine($"Compressing {inputPath} to {outputPath} using RAR.");
-    }
-}
-
-public class Compressor
-{
-    private CompressionStrategy _strategy;
-
-    public Compressor(CompressionStrategy strategy)
-    {
-        _strategy = strategy;
+        public abstract void Compress(string inputPath, string outputPath);
     }
 
-    public void SetStrategy(CompressionStrategy strategy)
+    public class ZipCompression : CompressionStrategy
     {
-        _strategy = strategy;
+        public override void Compress(string inputPath, string outputPath)
+        {
+            Console.WriteLine($"Compressing {inputPath} to {outputPath} using ZIP.");
+        }
     }
 
-    public void Compress(string input, string output)
+    public class RarCompression : CompressionStrategy
     {
-        _strategy.Compress(input, output);
+        public override void Compress(string inputPath, string outputPath)
+        {
+            Console.WriteLine($"Compressing {inputPath} to {outputPath} using RAR.");
+        }
     }
-}
 
-public class Program
-{
-    public static void Main()
+    public class Compressor
     {
-        Compressor compressor = new Compressor(new ZipCompression());
-        compressor.Compress("data.txt", "data.zip");
+        private CompressionStrategy _strategy;
 
-        compressor.SetStrategy(new RarCompression());
-        compressor.Compress("data.txt", "data.rar");
+        public Compressor(CompressionStrategy strategy)
+        {
+            _strategy = strategy;
+        }
+
+        public void SetStrategy(CompressionStrategy strategy)
+        {
+            _strategy = strategy;
+        }
+
+        public void Compress(string input, string output)
+        {
+            _strategy.Compress(input, output);
+        }
     }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Compressor compressor = new Compressor(new ZipCompression());
+            compressor.Compress("data.txt", "data.zip");
+
+            compressor.SetStrategy(new RarCompression());
+            compressor.Compress("data.txt", "data.rar");
+        }
+    }
+
 }
