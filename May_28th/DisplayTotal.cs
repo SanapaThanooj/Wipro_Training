@@ -12,22 +12,22 @@ namespace ConsoleApp6
     {
         public static void Main()
         {
-            SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=SSPI");
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=SSPI");
 
             SqlDataReader rdr = null;
 
             try
             {
 
-                conn.Open();
+                connection.Open();
 
                 string query = @"
                 SELECT p.CategoryID, SUM(od.UnitPrice * od.Quantity) AS TotalSales
                 FROM [Order Details] od
-                JOIN Products p ON od.ProductID = p.ProductID
-                GROUP BY p.CategoryID";
+                JOIN Products P ON od.ProductID = P.ProductID
+                GROUP BY P.CategoryID";
 
-                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
