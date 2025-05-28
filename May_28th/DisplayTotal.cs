@@ -22,7 +22,7 @@ namespace ConsoleApp6
                 connection.Open();
 
                 string query = @"
-                SELECT p.CategoryID, SUM(od.UnitPrice * od.Quantity) AS TotalSales
+                SELECT P.CategoryID, SUM(od.UnitPrice * od.Quantity) AS TotalSales
                 FROM [Order Details] od
                 JOIN Products P ON od.ProductID = P.ProductID
                 GROUP BY P.CategoryID";
