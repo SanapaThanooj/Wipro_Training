@@ -12,33 +12,37 @@ namespace ConsoleApp6
     {
         public static void Main()
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=true;";
-            string query = @"
-            SELECT CategoryID, SUM(UnitPrice * Quantity) AS TotalSales
-            FROM [Order Details]
-            GROUP BY CategoryID";
+            SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=SSPI");
+
+            SqlDataReader rdr = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+
+                conn.Open();
+
+                string query = @"
+                SELECT p.CategoryID, SUM(od.UnitPrice * od.Quantity) AS TotalSales
+                FROM [Order Details] od
+                JOIN Products p ON od.ProductID = p.ProductID
+                GROUP BY p.CategoryID";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                Console.WriteLine("CategoryID\tTotalSales");
+                foreach (DataRow row in table.Rows)
                 {
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    foreach (DataRow row in dataTable.Rows)
-                    {
-                        int categoryId = Convert.ToInt32(row["CategoryID"]);
-                        decimal totalSales = Convert.ToDecimal(row["TotalSales"]);
-
-                        Console.WriteLine($"CategoryID: {categoryId}, Total Sales: {totalSales:C}");
-                    }
+                    Console.WriteLine($"{row["CategoryID"]}\t\t{row["TotalSales"]}");
                 }
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+            
         }
     }
 
