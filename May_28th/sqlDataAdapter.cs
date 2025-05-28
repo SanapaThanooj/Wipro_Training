@@ -1,32 +1,49 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace ConsoleApp6
 {
-     class LoadProduct
+    class Disconnected
     {
         static void Main()
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=true;";
-            string query = "SELECT * FROM Products";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=SSPI";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+            string query = "SELECT ProductID, ProductName, UnitsInStock FROM Products";
+
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+
+
                 DataSet dataSet = new DataSet();
+
+
                 adapter.Fill(dataSet, "Products");
 
-                foreach (DataRow row in dataSet.Tables["Products"].Rows)
+
+                DataTable productsTable = dataSet.Tables["Products"];
+
+
+                Console.WriteLine("{0,-10} {1,-35} {2}", "ProductID", "ProductName", "UnitsInStock");
+                Console.WriteLine(new string('-', 60));
+
+                foreach (DataRow row in productsTable.Rows)
                 {
-                    int stock = Convert.ToInt32(row["UnitsInStock"]);
-                    if (stock > 20)
+
+                    int unitsInStock = Convert.ToInt32(row["UnitsInStock"]);
+
+                    if (unitsInStock > 20)
                     {
-                        Console.WriteLine($"Product: {row["ProductName"]}, Stock: {stock}");
+                        Console.WriteLine("{0,-10} {1,-35} {2}",
+                            row["ProductID"], row["ProductName"], row["UnitsInStock"]);
                     }
                 }
             }
