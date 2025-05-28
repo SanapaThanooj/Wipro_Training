@@ -4,34 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace ConsoleApp6
 {
-     class ExecuteStoredProcedure
+    class ExecuteStoredProcedure
     {
-        static void Main()
+        static void Main(string[] args)
+        {
+            Console.Write("Enter Customer ID: ");
+            string customerId = Console.ReadLine(); 
+
+            ExecuteCustOrderHist(customerId);
+        }
+
+        static void ExecuteCustOrderHist(string customerId)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=true;";
-            string customerId = "ALFKI"; 
+
             using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand("CustOrderHist", connection))
+            using (SqlCommand command = new SqlCommand("CustOrderHist", connection))
             {
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                command.CommandType = CommandType.StoredProcedure; 
+                command.Parameters.AddWithValue("@CustomerID", customerId); 
+
                 try
                 {
-                    connection.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    connection.Open(); 
+                    SqlDataReader reader = command.ExecuteReader(); 
+
+                    
                     while (reader.Read())
                     {
-                        Console.WriteLine($"Product: {reader["ProductName"]}, Quantity: {reader["Quantity"]}");
+                        string productName = reader["ProductName"].ToString();
+                        int total = Convert.ToInt32(reader["Total"]);
+
+                        Console.WriteLine($"Product Name: {productName}, Total: {total}");
                     }
+
+                    reader.Close(); 
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error executing stored procedure: " + ex.Message);
+                    Console.WriteLine("Error: " + ex.Message); 
                 }
             }
         }
+
     }
 }
+
