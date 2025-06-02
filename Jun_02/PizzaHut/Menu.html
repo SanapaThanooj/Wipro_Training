@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza Hut - Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Our Menu</h1>
+    <nav>
+    <ul>
+    <li><a href="index.html">  Home  </a> </li>
+      <li><a href="contact.html">  Contact  </a></li>
+    </ul>
+    </nav>
+  </header>
+
+  <section class="pizza-grid">
+    <div class="pizza-card">
+      <img src="margherita.jpg" alt="Margherita">
+      <h3>Margherita</h3>
+      <p>₹250</p>
+      <button onclick="addToCart('Margherita', 250)">Add to Cart</button>
+    </div>
+    <div class="pizza-card">
+      <img src="pepperoni.jpg" alt="Pepperoni">
+      <h3>Pepperoni</h3>
+      <p>₹300</p>
+      <button onclick="addToCart('Pepperoni', 300)">Add to Cart</button>
+    </div>
+    <div class="pizza-card">
+      <img src="veggie.jpg" alt="Veggie">
+      <h3>Veggie Delight</h3>
+      <p>₹280</p>
+      <button onclick="addToCart('Veggie Delight', 280)">Add to Cart</button>
+
+    </div>
+  </section>
+
+  <section id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <p id="cartTotal">Total: ₹0</p>
+     <a href="payment.html"><button>Go to Payment</button></a>
+  </section>
+ 
+  <footer>
+    <p>&copy; 2025 Pizza Hut</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

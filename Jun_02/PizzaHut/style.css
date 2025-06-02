@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('pizzahut.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+header {
+  background: #3a0b0b;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 200px;
+ 
+  color: white;
+}
+
+.hero button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #003049;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#menu {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.pizza-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.pizza-card h3{
+    color: #3a0b0b;
+
+}
+
+.pizza-card p{
+    color: #3a0b0b;
+
+}
+.pizza-card {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+#contact {
+  padding: 40px 20px;
+  background: #fcbf49;
+  text-align: center;
+}
+
+form input, form textarea {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+form button {
+  padding: 10px 20px;
+  background: #d62828;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.pizza-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#cart {
+  padding: 30px;
+  background: #ec6c6c;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#cartItems {
+  list-style: none;
+  padding: 05px 2px;
+  margin-top: 10px;
+}
+
+#cartItems li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.payment-form {
+  max-width: 400px;
+  margin: 50px auto;
+  background: rgb(75, 70, 70);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.payment-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.payment-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #003049;
+  color: white;
+}
+
